@@ -117,7 +117,7 @@ function drawCardTable() {
     const canvas = document.getElementById('cardTable');
     const ctx = canvas.getContext('2d');
 
-    const borderWidth = 5;
+    const borderWidth = 4;
 
     // The dimensions on each side for the player's info
     const playerSideWidth = 150;
@@ -146,6 +146,7 @@ function drawCardTable() {
     // Border color
     ctx.strokeStyle = 'black';
     ctx.lineWidth = borderWidth;
+    // Calculate border dimensions to fit around the center
     ctx.strokeRect(
         tableCenterX + borderWidth / 2, 
         tableCenterY + borderWidth / 2,
@@ -157,7 +158,7 @@ function drawCardTable() {
     ctx.fillStyle = 'white';
     ctx.font = '30px Arial';
     ctx.textAlign = 'center';
-    // ctx.fillText('Spades', canvas.width / 2, 50);
+    ctx.fillText('Spades', canvas.width / 2, 50);
 
     // Draw the placeholders for the players
     // Player 1 (left side)
