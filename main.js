@@ -116,12 +116,11 @@ game.StartGame();
 function drawCardTable() {
     const canvas = document.getElementById('cardTable');
     const ctx = canvas.getContext('2d');
-
+    
+    //canvas.width = window.innerWidth;
+    //canvas.height = window.innerHeight;
     const borderWidth = 4;
 
-    // The dimensions on each side for the player's info
-    const playerSideWidth = 150;
-    const playerSideHeight = 100;
 
     // The dimensions for the center where cards will be played
     const tableCenterWidth = 300;
@@ -159,10 +158,19 @@ function drawCardTable() {
     ctx.font = '30px Arial';
     ctx.textAlign = 'center';
     ctx.fillText('Spades', canvas.width / 2, 50);
+}
+
+
+function drawPlayers() {
+    const canvas = document.getElementById('cardTable');
+    const ctx = canvas.getContext('2d');
 
     // Draw the placeholders for the players
-    // Player 1 (left side)
-    ctx.fillStyle = 'blue';
+    // The dimensions on each side for the player's info
+    const playerSideWidth = 150;
+    const playerSideHeight = 100;    
+
+    ctx.fillStyle = 'darkgray';
     ctx.fillRect(0, (canvas.height - playerSideHeight) / 2, playerSideWidth, playerSideHeight);
     // Draw Player 1's icon
     ctx.beginPath();
@@ -186,7 +194,7 @@ function drawCardTable() {
     );
 
     // Player 2 (top side)
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'darkgray';
     ctx.fillRect((canvas.width - playerSideWidth) / 2, 0, playerSideWidth, playerSideHeight);
     // Draw icon
     ctx.beginPath();
@@ -210,13 +218,13 @@ function drawCardTable() {
     );
 
     // Player 3 (right side)
-    ctx.fillStyle = 'yellow';
+    ctx.fillStyle = 'darkgray';
     ctx.fillRect(canvas.width - playerSideWidth, (canvas.height - playerSideHeight) / 2, playerSideWidth, playerSideHeight);
     // Draw icon
     ctx.beginPath();
     ctx.arc(
-        canvas.width - playerSideWidth / 2, 
-        (canvas.height - playerSideHeight) / 2 + playerSideHeight / 2, 
+        canvas.width - playerSideWidth / 1.25, 
+        (canvas.height - playerSideHeight) / 2 + playerSideHeight / 4, 
         20, 
         0, 
         2 * Math.PI
@@ -229,18 +237,18 @@ function drawCardTable() {
     ctx.textAlign = 'center';
     ctx.fillText(
         'Score: 0', 
-        canvas.width - playerSideWidth / 2, 
-        (canvas.height - playerSideHeight) / 2 + playerSideHeight / 2 + 10
+        canvas.width - playerSideWidth / 1.5, 
+        (canvas.height - playerSideHeight) / 2 + playerSideHeight / 2 + 30
     );
 
     // Player 4 (bottom side)
-    ctx.fillStyle = 'orange';
+    ctx.fillStyle = 'darkgray';
     ctx.fillRect((canvas.width - playerSideWidth) / 2, canvas.height - playerSideHeight, playerSideWidth, playerSideHeight);
     // Draw icon
     ctx.beginPath();
     ctx.arc(
-        (canvas.width - playerSideWidth) / 2 + playerSideWidth / 2, 
-        canvas.height - playerSideHeight / 2, 
+        (canvas.width - playerSideWidth) / 2 + playerSideWidth / 5, 
+        canvas.height - playerSideHeight / 1.35, 
         20, 
         0, 
         2 * Math.PI
@@ -253,12 +261,12 @@ function drawCardTable() {
     ctx.textAlign = 'center';
     ctx.fillText(
         'Score: 0', 
-        (canvas.width - playerSideWidth) / 2 + playerSideWidth / 2, 
-        canvas.height - playerSideHeight / 2 + 10);
+        (canvas.width - playerSideWidth) / 2 + playerSideWidth / 3, 
+        canvas.height - playerSideHeight / 2 + 30);
 }
 
-// Call the drawCardTable function
 drawCardTable();
+drawPlayers();
 
 // Play 5 rounds then declare a winner
 for (let i = 0; i < 5; i++) {
